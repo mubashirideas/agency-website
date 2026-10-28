@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Solution — Digital Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --navy: #0A1F44;
+  --electric: #2563EB;
+  --cyan: #06B6D4;
+  --white: #F8FAFC;
+  --charcoal: #1E293B;
+  --slate: #0F172A;
+  --gray: #64748B;
+  --green: #10B981;
+  --light: #E2E8F0;
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--slate);background:var(--white);overflow-x:hidden;}
+h1,h2,h3,h4,h5,h6{font-family:'Poppins',sans-serif;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+.page{display:none;}
+.page.active{display:block;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:var(--navy);padding:0 5%;height:72px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 20px rgba(0,0,0,0.3);}
+.logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.4rem;color:#fff;cursor:pointer;letter-spacing:-0.5px;}
+.logo span{color:var(--cyan);}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{color:rgba(255,255,255,0.8);font-size:0.9rem;font-weight:500;font-family:'Poppins',sans-serif;cursor:pointer;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;}
+.nav-cta{background:var(--green);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.88rem;padding:10px 22px;border-radius:50px;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(16,185,129,0.35);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:0.3s;}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--navy);padding:1.5rem 5%;z-index:999;flex-direction:column;gap:1rem;border-top:1px solid rgba(255,255,255,0.1);}
+.mobile-menu a{color:rgba(255,255,255,0.85);font-family:'Poppins',sans-serif;font-weight:500;font-size:1rem;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08);cursor:pointer;}
+.mobile-menu.open{display:flex;}
+
+/* SHARED */
+.container{max-width:1160px;margin:0 auto;padding:0 5%;}
+.section-tag{display:inline-block;background:rgba(37,99,235,0.1);color:var(--electric);font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:5px 14px;border-radius:50px;margin-bottom:1rem;letter-spacing:0.5px;}
+.section-heading{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--slate);line-height:1.2;margin-bottom:1rem;}
+.section-sub{color:var(--gray);font-size:1rem;line-height:1.7;max-width:580px;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--electric);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;padding:13px 28px;border-radius:50px;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,0.35);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;padding:12px 28px;border-radius:50px;border:2px solid rgba(255,255,255,0.4);cursor:pointer;transition:border-color 0.2s,background 0.2s;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+.btn-green{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.9rem;padding:13px 28px;border-radius:50px;cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(16,185,129,0.35);}
+
+/* FOOTER */
+footer{background:var(--charcoal);color:rgba(255,255,255,0.7);padding:60px 5% 30px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand p{font-size:0.92rem;line-height:1.7;margin:1rem 0 1.5rem;max-width:280px;}
+.footer-logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;color:#fff;}
+.footer-logo span{color:var(--cyan);}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.7);font-size:0.85rem;transition:background 0.2s,color 0.2s;cursor:pointer;}
+.footer-social a:hover{background:var(--electric);color:#fff;}
+.footer-col h4{color:#fff;font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:600;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul li a{font-size:0.88rem;color:rgba(255,255,255,0.65);cursor:pointer;transition:color 0.2s;}
+.footer-col ul li a:hover{color:#fff;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;font-size:0.82rem;}
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;box-shadow:0 6px 20px rgba(37,211,102,0.4);cursor:pointer;transition:transform 0.2s;}
+.whatsapp-float:hover{transform:scale(1.1);}
+
+/* ========== HOME ========== */
+/* Hero */
+.hero{min-height:92vh;background:linear-gradient(135deg,#0A1F44 0%,#0D2A5E 50%,#1a1a4e 100%);display:flex;align-items:center;position:relative;overflow:hidden;padding:80px 5%;}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(37,99,235,0.15) 0%,transparent 60%),radial-gradient(circle at 80% 20%,rgba(6,182,212,0.12) 0%,transparent 50%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1160px;margin:0 auto;width:100%;}
+.hero-content{}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.15);border:1px solid rgba(6,182,212,0.3);color:var(--cyan);font-size:0.8rem;font-family:'Poppins',sans-serif;font-weight:500;padding:6px 16px;border-radius:50px;margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:1rem;}
+.hero h1 em{font-style:normal;color:var(--cyan);}
+.hero-sub{color:rgba(255,255,255,0.65);font-size:1.05rem;line-height:1.7;margin-bottom:2rem;max-width:480px;}
+.hero-dots{display:flex;gap:8px;margin-bottom:2rem;}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.25);}
+.hero-dot:first-child{background:var(--cyan);}
+.hero-btns{display:flex;flex-wrap:wrap;gap:1rem;}
+.hero-visual{display:flex;justify-content:center;align-items:center;}
+.hero-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(10px);border-radius:20px;padding:2.5rem;width:100%;max-width:420px;}
+.hero-card-header{display:flex;align-items:center;gap:12px;margin-bottom:2rem;}
+.hero-card-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--electric),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:'Poppins',sans-serif;}
+.hero-card-info h5{color:#fff;font-family:'Poppins',sans-serif;font-size:0.9rem;font-weight:600;}
+.hero-card-info p{color:rgba(255,255,255,0.5);font-size:0.78rem;}
+.hero-metric{margin-bottom:1.5rem;}
+.hero-metric-label{color:rgba(255,255,255,0.5);font-size:0.75rem;font-family:'Poppins',sans-serif;margin-bottom:6px;}
+.hero-metric-bar{height:8px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden;}
+.hero-metric-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--electric),var(--cyan));}
+.hero-metric-row{display:flex;justify-content:space-between;margin-top:4px;}
+.hero-metric-val{color:#fff;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:600;}
+.hero-stats-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
+.hero-stat-mini{background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;text-align:center;}
+.hero-stat-mini strong{display:block;color:var(--cyan);font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:700;}
+.hero-stat-mini span{color:rgba(255,255,255,0.5);font-size:0.72rem;}
+
+/* Stats */
+.stats{background:var(--charcoal);padding:50px 5%;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1160px;margin:0 auto;text-align:center;}
+.stat-item{}
+.stat-number{font-family:'Poppins',sans-serif;font-size:2.6rem;font-weight:800;color:#fff;line-height:1;}
+.stat-number span{color:var(--cyan);}
+.stat-label{color:rgba(255,255,255,0.55);font-size:0.88rem;margin-top:6px;}
+.stat-icon{font-size:1.3rem;color:var(--electric);margin-bottom:8px;}
+
+/* Services home */
+.services-home{padding:90px 5%;background:var(--white);}
+.services-home .section-heading,.services-home .section-tag,.services-home .section-sub{text-align:center;}
+.services-home .section-sub{margin:0 auto 3rem;}
+.services-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.svc-card{background:#fff;border:1px solid var(--light);border-radius:16px;padding:2.2rem;box-shadow:var(--card-shadow);transition:transform 0.3s,box-shadow 0.3s;cursor:default;}
+.svc-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(37,99,235,0.12);}
+.svc-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;}
+.svc-icon.blue{background:rgba(37,99,235,0.1);color:var(--electric);}
+.svc-icon.cyan{background:rgba(6,182,212,0.1);color:var(--cyan);}
+.svc-icon.green{background:rgba(16,185,129,0.1);color:var(--green);}
+.svc-card h3{font-size:1.15rem;font-weight:600;margin-bottom:0.6rem;}
+.svc-card p{font-size:0.9rem;color:var(--gray);line-height:1.65;}
+.svc-link{display:inline-flex;align-items:center;gap:6px;color:var(--electric);font-size:0.85rem;font-weight:600;font-family:'Poppins',sans-serif;margin-top:1rem;cursor:pointer;}
+
+/* Why Choose */
+.why{padding:90px 5%;background:#F1F5F9;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1160px;margin:0 auto;}
+.why-features{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.why-feat{background:#fff;border-radius:12px;padding:1.4rem;box-shadow:var(--card-shadow);}
+.why-feat-icon{width:40px;height:40px;border-radius:10px;background:rgba(37,99,235,0.08);color:var(--electric);display:flex;align-items:center;justify-content:center;margin-bottom:0.8rem;font-size:1rem;}
+.why-feat h4{font-size:0.95rem;font-weight:600;margin-bottom:0.3rem;}
+.why-feat p{font-size:0.82rem;color:var(--gray);line-height:1.55;}
+.why-visual{border-radius:20px;overflow:hidden;position:relative;}
+.why-visual-inner{background:linear-gradient(135deg,var(--navy),#1a3a6e);border-radius:20px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.why-vis-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.2rem;text-align:center;}
+.why-vis-card strong{display:block;font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:700;color:var(--cyan);}
+.why-vis-card span{font-size:0.75rem;color:rgba(255,255,255,0.55);}
+
+/* Portfolio preview */
+.portfolio-home{padding:90px 5%;background:var(--white);}
+.portfolio-home .section-heading,.portfolio-home .section-tag{text-align:center;}
+.portfolio-home .section-sub{text-align:center;margin:0 auto 3rem;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.port-card{border-radius:16px;overflow:hidden;position:relative;group cursor:pointer;}
+.port-img{height:220px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;}
+.port-img.p1{background:linear-gradient(135deg,#0A1F44,#2563EB);}
+.port-img.p2{background:linear-gradient(135deg,#064e3b,#10B981);}
+.port-img.p3{background:linear-gradient(135deg,#4c1d95,#7C3AED);}
+.port-img.p4{background:linear-gradient(135deg,#7c2d12,#ea580c);}
+.port-img.p5{background:linear-gradient(135deg,#1e3a5f,#06B6D4);}
+.port-img.p6{background:linear-gradient(135deg,#1a1a2e,#e94560);}
+.port-overlay{position:absolute;inset:0;background:rgba(10,31,68,0.85);display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;transition:opacity 0.3s;padding:1.5rem;text-align:center;}
+.port-card:hover .port-overlay{opacity:1;}
+.port-overlay h4{color:#fff;font-family:'Poppins',sans-serif;font-size:1rem;font-weight:600;margin-bottom:0.4rem;}
+.port-overlay .tag{background:var(--cyan);color:#fff;font-size:0.72rem;font-weight:600;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:50px;}
+.port-info{padding:1rem 1.2rem;background:#fff;border:1px solid var(--light);border-top:none;border-radius:0 0 16px 16px;}
+.port-info h4{font-size:0.95rem;font-weight:600;margin-bottom:2px;}
+.port-info span{font-size:0.78rem;color:var(--gray);}
+
+/* Testimonials */
+.testi{padding:90px 5%;background:#F1F5F9;}
+.testi .section-heading,.testi .section-tag,.testi .section-sub{text-align:center;}
+.testi .section-sub{margin:0 auto 3rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.testi-card{background:#fff;border-radius:16px;padding:2rem;box-shadow:var(--card-shadow);}
+.stars{color:#F59E0B;font-size:0.85rem;margin-bottom:1rem;}
+.testi-card blockquote{font-size:0.92rem;color:var(--slate);line-height:1.7;margin-bottom:1.5rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9rem;}
+.testi-author-info h5{font-size:0.9rem;font-weight:600;}
+.testi-author-info span{font-size:0.78rem;color:var(--gray);}
+
+/* CTA Banner */
+.cta-banner{padding:90px 5%;background:linear-gradient(135deg,var(--navy) 0%,#1a3a6e 50%,#1a2a5e 100%);position:relative;overflow:hidden;text-align:center;}
+.cta-banner::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 30% 50%,rgba(37,99,235,0.2) 0%,transparent 60%),radial-gradient(circle at 70% 30%,rgba(6,182,212,0.12) 0%,transparent 50%);}
+.cta-banner h2{color:#fff;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;margin-bottom:1rem;position:relative;}
+.cta-banner p{color:rgba(255,255,255,0.65);font-size:1rem;margin-bottom:2rem;position:relative;}
+
+/* Blog preview */
+.blog-home{padding:90px 5%;background:var(--white);}
+.blog-home .section-heading,.blog-home .section-tag,.blog-home .section-sub{text-align:center;}
+.blog-home .section-sub{margin:0 auto 3rem;}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.blog-card{background:#fff;border:1px solid var(--light);border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);transition:transform 0.3s;}
+.blog-card:hover{transform:translateY(-4px);}
+.blog-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.blog-img.b1{background:linear-gradient(135deg,#1e3a5f,#2563EB);}
+.blog-img.b2{background:linear-gradient(135deg,#064e3b,#10B981);}
+.blog-img.b3{background:linear-gradient(135deg,#4c1d95,#7C3AED);}
+.blog-body{padding:1.5rem;}
+.blog-cat{background:rgba(37,99,235,0.08);color:var(--electric);font-size:0.72rem;font-weight:600;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:50px;margin-bottom:0.8rem;display:inline-block;}
+.blog-card h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;line-height:1.4;}
+.blog-card p{font-size:0.85rem;color:var(--gray);line-height:1.6;}
+.blog-meta{display:flex;align-items:center;gap:8px;margin-top:1rem;font-size:0.78rem;color:var(--gray);}
+.blog-meta span{display:flex;align-items:center;gap:4px;}
+
+/* ========== SERVICES PAGE ========== */
+.page-hero{padding:80px 5% 60px;background:linear-gradient(135deg,var(--navy),#1a3a6e);text-align:center;}
+.page-hero h1{color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:1rem;}
+.page-hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:520px;margin:0 auto;}
+.svc-block{padding:80px 5%;}
+.svc-block:nth-child(even){background:#F1F5F9;}
+.svc-block-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1160px;margin:0 auto;}
+.svc-block-inner.reverse{direction:rtl;}
+.svc-block-inner.reverse > *{direction:ltr;}
+.svc-block-visual{border-radius:20px;padding:3rem;display:flex;align-items:center;justify-content:center;min-height:340px;font-size:5rem;position:relative;overflow:hidden;}
+.svc-block-visual.web{background:linear-gradient(135deg,#0A1F44,#2563EB);}
+.svc-block-visual.seo{background:linear-gradient(135deg,#064e3b,#10B981);}
+.svc-block-visual.social{background:linear-gradient(135deg,#4c1d95,#7C3AED);}
+.svc-sub-list{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:1.5rem 0;}
+.svc-sub-item{background:#fff;border:1px solid var(--light);border-radius:10px;padding:0.8rem 1rem;font-size:0.82rem;font-weight:500;display:flex;align-items:center;gap:8px;color:var(--slate);}
+.svc-sub-item i{color:var(--electric);font-size:0.8rem;}
+.features-list{list-style:none;margin:1rem 0;}
+.features-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.7rem;font-size:0.9rem;color:var(--slate);}
+.features-list li i{color:var(--green);margin-top:2px;flex-shrink:0;}
+
+/* ========== PORTFOLIO PAGE ========== */
+.filter-bar{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;padding:2.5rem 5%;}
+.filter-btn{background:#fff;border:1px solid var(--light);color:var(--gray);font-family:'Poppins',sans-serif;font-size:0.85rem;font-weight:500;padding:9px 22px;border-radius:50px;cursor:pointer;transition:all 0.2s;}
+.filter-btn:hover,.filter-btn.active{background:var(--electric);color:#fff;border-color:var(--electric);}
+.portfolio-full{padding:20px 5% 80px;}
+.portfolio-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.port-full-card{border-radius:16px;overflow:hidden;box-shadow:var(--card-shadow);background:#fff;cursor:pointer;transition:transform 0.3s;}
+.port-full-card:hover{transform:translateY(-4px);}
+.port-full-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;}
+.port-full-body{padding:1.2rem 1.4rem;}
+.port-full-body h3{font-size:1rem;font-weight:600;margin-bottom:4px;}
+.port-full-body .tag{background:rgba(37,99,235,0.08);color:var(--electric);font-size:0.72rem;font-weight:600;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:50px;}
+.port-full-body p{font-size:0.82rem;color:var(--gray);margin-top:6px;}
+.port-results{display:flex;gap:1rem;margin-top:10px;}
+.port-result-tag{background:rgba(16,185,129,0.08);color:var(--green);font-size:0.72rem;font-weight:600;font-family:'Poppins',sans-serif;padding:3px 10px;border-radius:50px;}
+
+/* ========== ABOUT PAGE ========== */
+.about-story{padding:90px 5%;background:var(--white);}
+.about-story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1160px;margin:0 auto;}
+.about-visual{border-radius:20px;background:linear-gradient(135deg,var(--navy),#1a3a6e);padding:3rem;min-height:360px;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-content:center;}
+.about-vis-box{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:1.2rem;text-align:center;}
+.about-vis-box strong{display:block;color:var(--cyan);font-family:'Poppins',sans-serif;font-size:1.8rem;font-weight:700;}
+.about-vis-box span{font-size:0.75rem;color:rgba(255,255,255,0.5);}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1160px;margin:3rem auto 0;}
+.vm-card{border-radius:16px;padding:2rem;}
+.vm-card.vision{background:var(--navy);color:#fff;}
+.vm-card.mission{background:var(--electric);color:#fff;}
+.vm-card h3{font-size:1.2rem;font-weight:700;margin-bottom:0.8rem;}
+.vm-card p{font-size:0.92rem;opacity:0.85;line-height:1.7;}
+.team{padding:90px 5%;background:#F1F5F9;}
+.team .section-heading,.team .section-tag,.team .section-sub{text-align:center;}
+.team .section-sub{margin:0 auto 3rem;}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.team-card{background:#fff;border-radius:16px;padding:2rem;text-align:center;box-shadow:var(--card-shadow);}
+.team-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.4rem;color:#fff;}
+.team-card h4{font-size:0.95rem;font-weight:600;margin-bottom:2px;}
+.team-card .role{font-size:0.8rem;color:var(--electric);font-weight:500;margin-bottom:10px;}
+.team-card p{font-size:0.8rem;color:var(--gray);line-height:1.55;}
+.values{padding:80px 5%;background:var(--white);}
+.values .section-heading,.values .section-tag{text-align:center;}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1160px;margin:2.5rem auto 0;}
+.val-card{border-radius:16px;padding:2rem;text-align:center;border:1px solid var(--light);box-shadow:var(--card-shadow);}
+.val-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin:0 auto 1rem;}
+.val-card h4{font-size:0.95rem;font-weight:600;margin-bottom:0.4rem;}
+.val-card p{font-size:0.82rem;color:var(--gray);}
+.certs{padding:60px 5%;background:#F1F5F9;text-align:center;}
+.certs h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:2rem;color:var(--slate);}
+.cert-badges{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.cert-badge{background:#fff;border:1px solid var(--light);border-radius:12px;padding:1rem 2rem;box-shadow:var(--card-shadow);display:flex;align-items:center;gap:12px;}
+.cert-badge i{font-size:1.5rem;}
+.cert-badge span{font-family:'Poppins',sans-serif;font-size:0.88rem;font-weight:600;color:var(--slate);}
+
+/* ========== BLOG PAGE ========== */
+.blog-hero{padding:80px 5% 60px;background:linear-gradient(135deg,var(--navy),#1a3a6e);text-align:center;}
+.blog-hero h1{color:#fff;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:0.8rem;}
+.blog-hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:500px;margin:0 auto 2rem;}
+.blog-search{display:flex;gap:0;max-width:480px;margin:0 auto;}
+.blog-search input{flex:1;padding:13px 20px;border:none;border-radius:50px 0 0 50px;font-size:0.9rem;outline:none;font-family:'Inter',sans-serif;}
+.blog-search button{background:var(--green);color:#fff;border:none;padding:13px 22px;border-radius:0 50px 50px 0;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:0.85rem;}
+.blog-filters{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;padding:2rem 5% 0;}
+.blog-section{padding:60px 5% 90px;}
+.featured-article{max-width:1160px;margin:0 auto 3rem;background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--card-shadow);display:grid;grid-template-columns:1.2fr 1fr;}
+.feat-img{background:linear-gradient(135deg,var(--navy),var(--electric));min-height:320px;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+.feat-body{padding:2.5rem;}
+.feat-body .blog-cat{margin-bottom:0.6rem;}
+.feat-body h2{font-size:1.5rem;font-weight:700;margin-bottom:0.8rem;line-height:1.3;}
+.feat-body p{font-size:0.9rem;color:var(--gray);line-height:1.7;margin-bottom:1.5rem;}
+.feat-meta{display:flex;align-items:center;gap:1rem;font-size:0.8rem;color:var(--gray);margin-bottom:1.5rem;}
+.blog-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1160px;margin:0 auto;}
+.load-more{text-align:center;margin-top:3rem;}
+
+/* ========== CONTACT PAGE ========== */
+.contact-section{padding:80px 5%;background:var(--white);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1160px;margin:0 auto;}
+.contact-form-wrap{background:#fff;border:1px solid var(--light);border-radius:20px;padding:2.5rem;box-shadow:var(--card-shadow);}
+.contact-form-wrap h3{font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;}
+.contact-form-wrap > p{font-size:0.88rem;color:var(--gray);margin-bottom:2rem;}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;font-size:0.82rem;font-weight:600;font-family:'Poppins',sans-serif;color:var(--slate);margin-bottom:6px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;border:1.5px solid var(--light);border-radius:10px;font-family:'Inter',sans-serif;font-size:0.9rem;color:var(--slate);background:#fff;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--electric);}
+.form-group textarea{resize:vertical;min-height:120px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.contact-info-wrap{padding:0.5rem;}
+.contact-info-wrap h3{font-size:1.3rem;font-weight:700;margin-bottom:0.4rem;}
+.contact-info-wrap > p{font-size:0.88rem;color:var(--gray);margin-bottom:2rem;}
+.contact-detail{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem;}
+.contact-detail-icon{width:44px;height:44px;border-radius:12px;background:rgba(37,99,235,0.08);color:var(--electric);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.contact-detail-text h5{font-size:0.88rem;font-weight:600;margin-bottom:2px;}
+.contact-detail-text p,.contact-detail-text a{font-size:0.85rem;color:var(--gray);}
+.map-placeholder{background:linear-gradient(135deg,#e2e8f0,#cbd5e1);border-radius:16px;height:200px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:1.5rem;color:var(--gray);}
+.contact-social h5{font-size:0.88rem;font-weight:600;margin-bottom:0.8rem;}
+.social-links{display:flex;gap:10px;}
+.social-link{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:0.85rem;cursor:pointer;transition:transform 0.2s;}
+.social-link:hover{transform:scale(1.1);}
+.social-link.fb{background:#1877F2;}
+.social-link.ig{background:linear-gradient(45deg,#405DE6,#5851DB,#833AB4,#C13584,#E1306C,#FD1D1D);}
+.social-link.li{background:#0A66C2;}
+.social-link.tw{background:#1DA1F2;}
+
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:2000;align-items:center;justify-content:center;padding:2rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:20px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:var(--light);border:none;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;}
+.modal h2{font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;}
+.modal .tag{margin-bottom:1rem;}
+.modal p{font-size:0.9rem;color:var(--gray);line-height:1.7;margin-bottom:1rem;}
+.tech-stack{display:flex;flex-wrap:wrap;gap:8px;margin:1rem 0;}
+.tech-tag{background:#F1F5F9;color:var(--slate);font-size:0.78rem;font-weight:500;padding:4px 12px;border-radius:50px;}
+.modal-results{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;}
+.modal-result{text-align:center;background:#F1F5F9;border-radius:12px;padding:1rem;}
+.modal-result strong{display:block;font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:700;color:var(--electric);}
+.modal-result span{font-size:0.75rem;color:var(--gray);}
+
+/* Responsive */
+@media(max-width:1024px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .hero-grid,.why-grid,.svc-block-inner,.about-story-grid,.contact-grid,.featured-article{grid-template-columns:1fr;}
+  .hero{min-height:auto;padding:60px 5%;}
+  .hero-visual{display:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .services-cards,.portfolio-grid,.testi-grid,.blog-grid,.portfolio-full-grid,.blog-full-grid,.svc-sub-list{grid-template-columns:1fr;}
+  .why-features,.vm-grid,.modal-results{grid-template-columns:1fr;}
+  .team-grid,.values-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .svc-block-inner.reverse{direction:ltr;}
+  .form-row{grid-template-columns:1fr;}
+  .feat-img{min-height:200px;}
+}
+@media(max-width:480px){
+  .team-grid{grid-template-columns:1fr;}
+  .cert-badges{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="logo" onclick="navigate('home')">Unique<span>Solution</span></div>
+  <div class="nav-links">
+    <a onclick="navigate('home')" data-page="home" class="active">Home</a>
+    <a onclick="navigate('services')" data-page="services">Services</a>
+    <a onclick="navigate('portfolio')" data-page="portfolio">Portfolio</a>
+    <a onclick="navigate('about')" data-page="about">About Us</a>
+    <a onclick="navigate('blog')" data-page="blog">Blog</a>
+    <a onclick="navigate('contact')" data-page="contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="navigate('contact')">Get a Free Quote</button>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a onclick="navigate('home');closeMobile()">Home</a>
+  <a onclick="navigate('services');closeMobile()">Services</a>
+  <a onclick="navigate('portfolio');closeMobile()">Portfolio</a>
+  <a onclick="navigate('about');closeMobile()">About Us</a>
+  <a onclick="navigate('blog');closeMobile()">Blog</a>
+  <a onclick="navigate('contact');closeMobile()">Contact</a>
+</div>
+
+<!-- ==================== HOME ==================== -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-bolt"></i> Digital Growth Partner</div>
+        <h1>We Build Digital Experiences That <em>Grow Your Business</em></h1>
+        <p class="hero-sub">Web Design · SEO · Social Media Marketing. We turn clicks into customers and ideas into results.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="navigate('contact')"><i class="fas fa-rocket"></i> Get Started</button>
+          <button class="btn-outline" onclick="navigate('portfolio')"><i class="fas fa-eye"></i> View Our Work</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-avatar">US</div>
+            <div class="hero-card-info"><h5>Campaign Dashboard</h5><p>Live Analytics</p></div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric-label">Organic Traffic Growth</div>
+            <div class="hero-metric-bar"><div class="hero-metric-fill" style="width:82%"></div></div>
+            <div class="hero-metric-row"><div class="hero-metric-val">+82%</div><div class="hero-metric-val" style="color:rgba(255,255,255,0.4);font-size:0.72rem;">This Month</div></div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric-label">Lead Conversion Rate</div>
+            <div class="hero-metric-bar"><div class="hero-metric-fill" style="width:67%;background:linear-gradient(90deg,#10B981,#06B6D4)"></div></div>
+            <div class="hero-metric-row"><div class="hero-metric-val">+67%</div><div class="hero-metric-val" style="color:rgba(255,255,255,0.4);font-size:0.72rem;">vs Last Quarter</div></div>
+          </div>
+          <div class="hero-stats-row">
+            <div class="hero-stat-mini"><strong>150+</strong><span>Projects Done</span></div>
+            <div class="hero-stat-mini"><strong>99%</strong><span>Satisfaction</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-icon"><i class="fas fa-folder-open"></i></div><div class="stat-number">150<span>+</span></div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat-item"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-number">80<span>+</span></div><div class="stat-label">Happy Clients</div></div>
+      <div class="stat-item"><div class="stat-icon"><i class="fas fa-calendar-check"></i></div><div class="stat-number">5<span>+</span></div><div class="stat-label">Years of Experience</div></div>
+      <div class="stat-item"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-number">99<span>%</span></div><div class="stat-label">Client Satisfaction</div></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services-home">
+    <div class="container">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-heading">Services Built Around Your Growth</h2>
+      <p class="section-sub">From stunning websites to top-of-page rankings, every service we offer is engineered to move your business forward.</p>
+    </div>
+    <div class="services-cards">
+      <div class="svc-card">
+        <div class="svc-icon blue"><i class="fas fa-code"></i></div>
+        <h3>Website Design & Development</h3>
+        <p>Custom-built websites that load fast, look great on any device, and convert visitors into customers. From landing pages to full e-commerce.</p>
+        <div class="svc-link" onclick="navigate('services')">Explore Service <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon cyan"><i class="fas fa-search"></i></div>
+        <h3>Search Engine Optimization</h3>
+        <p>Rank higher, get found faster. Our data-driven SEO strategies build sustainable organic traffic that compounds month over month.</p>
+        <div class="svc-link" onclick="navigate('services')">Explore Service <i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon green"><i class="fas fa-share-nodes"></i></div>
+        <h3>Social Media Marketing</h3>
+        <p>Build a loyal audience and drive real engagement across Facebook, Instagram, LinkedIn, and beyond with content that actually resonates.</p>
+        <div class="svc-link" onclick="navigate('services')">Explore Service <i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why">
+    <div class="why-grid">
+      <div>
+        <div class="section-tag">Why Work With Us</div>
+        <h2 class="section-heading">Results You Can Measure, Partners You Can Trust</h2>
+        <p class="section-sub">We don't just deliver work — we deliver outcomes. Every project is backed by strategy, data, and a team that cares about your success.</p>
+        <div class="why-features">
+          <div class="why-feat"><div class="why-feat-icon"><i class="fas fa-fingerprint"></i></div><h4>Custom Strategies</h4><p>No templates. Each plan is tailored to your market, goals, and budget.</p></div>
+          <div class="why-feat"><div class="why-feat-icon"><i class="fas fa-chart-line"></i></div><h4>Transparent Reporting</h4><p>Clear dashboards and monthly reports so you always know what's working.</p></div>
+          <div class="why-feat"><div class="why-feat-icon"><i class="fas fa-trophy"></i></div><h4>Proven Results</h4><p>150+ successful projects and an average 3× ROI across our client base.</p></div>
+          <div class="why-feat"><div class="why-feat-icon"><i class="fas fa-headset"></i></div><h4>Dedicated Support</h4><p>A real point of contact who knows your account, always on standby.</p></div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-visual-inner">
+          <div class="why-vis-card"><strong>3×</strong><span>Average ROI</span></div>
+          <div class="why-vis-card"><strong>48h</strong><span>Avg. Response Time</span></div>
+          <div class="why-vis-card"><strong>95%</strong><span>Retention Rate</span></div>
+          <div class="why-vis-card"><strong>12+</strong><span>Industries Served</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Preview -->
+  <section class="portfolio-home">
+    <div class="container">
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-heading">Projects That Speak for Themselves</h2>
+      <p class="section-sub">A snapshot of recent work spanning web design, SEO, and social media campaigns.</p>
+    </div>
+    <div class="portfolio-grid" style="max-width:1160px;margin:0 auto;">
+      <div class="port-card"><div class="port-img p1"><i class="fas fa-store" style="color:rgba(255,255,255,0.4)"></i><div class="port-overlay"><h4>Evergreen E-Commerce</h4><span class="tag">Web Design</span></div></div><div class="port-info"><h4>Evergreen E-Commerce</h4><span>Web Design</span></div></div>
+      <div class="port-card"><div class="port-img p2"><i class="fas fa-leaf" style="color:rgba(255,255,255,0.4)"></i><div class="port-overlay"><h4>OrganicRoots SEO</h4><span class="tag">SEO</span></div></div><div class="port-info"><h4>OrganicRoots</h4><span>SEO</span></div></div>
+      <div class="port-card"><div class="port-img p3"><i class="fas fa-spa" style="color:rgba(255,255,255,0.4)"></i><div class="port-overlay"><h4>Luxe Spa Social</h4><span class="tag">Social Media</span></div></div><div class="port-info"><h4>Luxe Spa</h4><span>Social Media</span></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;"><button class="btn-primary" onclick="navigate('portfolio')"><i class="fas fa-grid-2"></i> View All Projects</button></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testi">
+    <div class="container">
+      <div class="section-tag">Client Stories</div>
+      <h2 class="section-heading">What Our Clients Say</h2>
+      <p class="section-sub">Real results from real businesses who trusted us to grow their digital presence.</p>
+    </div>
+    <div class="testi-grid" style="max-width:1160px;margin:0 auto;">
+      <div class="testi-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><blockquote>"Unique Solution completely transformed our online presence. Within 4 months, our website traffic tripled and we're converting leads we never thought possible."</blockquote><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#2563EB,#06B6D4)">JM</div><div class="testi-author-info"><h5>James Mitchell</h5><span>CEO, TechNova Ltd</span></div></div></div>
+      <div class="testi-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><blockquote>"Their SEO work moved us from page 4 to page 1 in under 6 months. The team is professional, responsive, and genuinely invested in our growth."</blockquote><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#10B981,#06B6D4)">SR</div><div class="testi-author-info"><h5>Sarah Rosenberg</h5><span>Founder, GreenLeaf Market</span></div></div></div>
+      <div class="testi-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><blockquote>"Our social media following grew by 8,000+ in three months. More importantly, those followers converted to real paying customers. Incredible ROI."</blockquote><div class="testi-author"><div class="testi-avatar" style="background:linear-gradient(135deg,#7C3AED,#C13584)">KP</div><div class="testi-author-info"><h5>Keisha Palmer</h5><span>Director, Bloom Beauty Co</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div style="position:relative;z-index:1;">
+      <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">Ready When You Are</div>
+      <h2>Ready to Grow Your Business Online?</h2>
+      <p>Let's talk about your goals. No pressure, just a real conversation about what's possible.</p>
+      <button class="btn-green" onclick="navigate('contact')"><i class="fas fa-paper-plane"></i> Contact Us Today</button>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog-home">
+    <div class="container">
+      <div class="section-tag">Insights & Ideas</div>
+      <h2 class="section-heading">From Our Blog</h2>
+      <p class="section-sub">Practical strategies on web design, SEO, and social media to help you grow smarter.</p>
+    </div>
+    <div class="blog-grid" style="max-width:1160px;margin:0 auto;">
+      <div class="blog-card"><div class="blog-img b1"><i class="fas fa-globe" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Web Design</span><h3>10 Web Design Trends That Will Dominate 2026</h3><p>From AI-generated layouts to ultra-minimal UX — here's what forward-thinking brands are doing now.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Mubashir A.</span><span><i class="fas fa-clock"></i> 5 min read</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b2"><i class="fas fa-magnifying-glass-chart" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">SEO</span><h3>How to Rank on Page 1 Without Burning Your Budget</h3><p>Sustainable SEO strategies that compound over time — no black-hat shortcuts required.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Mubashir A.</span><span><i class="fas fa-clock"></i> 7 min read</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b3"><i class="fas fa-hashtag" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Social Media</span><h3>The Content Calendar Strategy That Tripled Our Reach</h3><p>A behind-the-scenes look at the exact planning framework we use for our top-performing clients.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Mubashir A.</span><span><i class="fas fa-clock"></i> 6 min read</span></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;"><button class="btn-primary" onclick="navigate('blog')"><i class="fas fa-book-open"></i> Read All Articles</button></div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ==================== SERVICES ==================== -->
+<div id="page-services" class="page">
+
+  <div class="page-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">What We Offer</div>
+    <h1>Services Designed to Drive Real Results</h1>
+    <p>Three core disciplines. One goal: grow your business online.</p>
+  </div>
+
+  <!-- Web Design -->
+  <section class="svc-block">
+    <div class="svc-block-inner">
+      <div class="svc-block-visual web"><i class="fas fa-laptop-code" style="color:rgba(255,255,255,0.7)"></i></div>
+      <div>
+        <div class="section-tag">Service 01</div>
+        <h2 class="section-heading">Website Design & Development</h2>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;">We design and build websites that do more than look good — they work hard for your business. Every site we ship is fast, accessible, mobile-first, and built to convert.</p>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1.5rem;">From a single landing page to a full e-commerce platform, our development process is collaborative, transparent, and always grounded in your goals.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i>Custom design — no templates, no exceptions</li>
+          <li><i class="fas fa-check-circle"></i>Mobile-first, cross-browser responsive layouts</li>
+          <li><i class="fas fa-check-circle"></i>Page speed optimization (Core Web Vitals)</li>
+          <li><i class="fas fa-check-circle"></i>CMS integration (WordPress, Webflow, custom)</li>
+          <li><i class="fas fa-check-circle"></i>SSL, security hardening, and ongoing maintenance</li>
+        </ul>
+        <p style="font-weight:600;font-family:'Poppins',sans-serif;font-size:0.88rem;margin:1.2rem 0 0.6rem;color:var(--slate);">Specific Offerings</p>
+        <div class="svc-sub-list">
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Landing Pages</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> E-Commerce Stores</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Corporate Portals</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Portfolio Sites</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Booking Systems</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Website Redesigns</div>
+        </div>
+        <button class="btn-primary" onclick="navigate('contact')"><i class="fas fa-paper-plane"></i> Get a Quote for This Service</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO -->
+  <section class="svc-block">
+    <div class="svc-block-inner reverse">
+      <div>
+        <div class="section-tag">Service 02</div>
+        <h2 class="section-heading">Search Engine Optimization</h2>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;">We build organic search visibility that compounds over time. Our SEO practice covers technical foundations, content strategy, and authority building — everything Google needs to send traffic your way.</p>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1.5rem;">You'll get monthly reporting that shows exactly what we're doing and the measurable impact it's having. No jargon. No smoke and mirrors.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i>Comprehensive site audit and competitive analysis</li>
+          <li><i class="fas fa-check-circle"></i>Keyword research mapped to buyer intent</li>
+          <li><i class="fas fa-check-circle"></i>On-page optimization and schema markup</li>
+          <li><i class="fas fa-check-circle"></i>Technical SEO — speed, crawlability, Core Web Vitals</li>
+          <li><i class="fas fa-check-circle"></i>Ethical link building and authority development</li>
+        </ul>
+        <div class="svc-sub-list">
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Local SEO</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> E-Commerce SEO</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Content Strategy</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Technical Audits</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Link Building</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Monthly Reporting</div>
+        </div>
+        <button class="btn-primary" onclick="navigate('contact')"><i class="fas fa-paper-plane"></i> Get a Quote for This Service</button>
+      </div>
+      <div class="svc-block-visual seo"><i class="fas fa-chart-line" style="color:rgba(255,255,255,0.7)"></i></div>
+    </div>
+  </section>
+
+  <!-- Social Media -->
+  <section class="svc-block">
+    <div class="svc-block-inner">
+      <div class="svc-block-visual social"><i class="fas fa-share-nodes" style="color:rgba(255,255,255,0.7)"></i></div>
+      <div>
+        <div class="section-tag">Service 03</div>
+        <h2 class="section-heading">Social Media Marketing</h2>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;">We manage your social presence end-to-end — from content creation and scheduling to community management and paid campaigns — so you can focus on running your business.</p>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1.5rem;">Our content is never generic. Everything is created to fit your brand voice and speak directly to your audience across each platform's unique context.</p>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i>Platform strategy for Facebook, Instagram, LinkedIn & X</li>
+          <li><i class="fas fa-check-circle"></i>Brand voice development and content guidelines</li>
+          <li><i class="fas fa-check-circle"></i>Monthly content calendars with original creative</li>
+          <li><i class="fas fa-check-circle"></i>Paid social campaign management and optimization</li>
+          <li><i class="fas fa-check-circle"></i>Analytics review and performance reporting</li>
+        </ul>
+        <div class="svc-sub-list">
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Content Creation</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Paid Ads (Meta/LinkedIn)</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Community Management</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Influencer Outreach</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Brand Audit & Strategy</div>
+          <div class="svc-sub-item"><i class="fas fa-check"></i> Analytics Reporting</div>
+        </div>
+        <button class="btn-primary" onclick="navigate('contact')"><i class="fas fa-paper-plane"></i> Get a Quote for This Service</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div style="position:relative;z-index:1;">
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Let's figure it out together. Book a free 30-minute strategy call — no commitment required.</p>
+      <button class="btn-green" onclick="navigate('contact')"><i class="fas fa-calendar-check"></i> Book a Free Strategy Call</button>
+    </div>
+  </section>
+
+</div><!-- /services -->
+
+<!-- ==================== PORTFOLIO ==================== -->
+<div id="page-portfolio" class="page">
+
+  <div class="page-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">Our Work</div>
+    <h1>Projects That Prove the Point</h1>
+    <p>150+ projects across web design, SEO, and social media. Here are a few we're especially proud of.</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterPortfolio('all',this)">All</button>
+    <button class="filter-btn" onclick="filterPortfolio('web',this)">Web Design</button>
+    <button class="filter-btn" onclick="filterPortfolio('seo',this)">SEO</button>
+    <button class="filter-btn" onclick="filterPortfolio('social',this)">Social Media</button>
+  </div>
+
+  <div class="portfolio-full">
+    <div class="portfolio-full-grid" id="portfolioGrid">
+
+      <div class="port-full-card" data-cat="web" onclick="openModal('modal1')">
+        <div class="port-full-img p1"><i class="fas fa-store" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>Evergreen E-Commerce</h3><span class="tag">Web Design</span><p>Full-stack WooCommerce build with custom UX and 40% conversion uplift post-launch.</p><div class="port-results"><span class="port-result-tag">+40% Conversions</span><span class="port-result-tag">3s Load Time</span></div></div>
+      </div>
+
+      <div class="port-full-card" data-cat="seo" onclick="openModal('modal2')">
+        <div class="port-full-img p2"><i class="fas fa-leaf" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>OrganicRoots Market</h3><span class="tag">SEO</span><p>From page 4 to position #2 for 18 primary keywords in 6 months.</p><div class="port-results"><span class="port-result-tag">+280% Traffic</span><span class="port-result-tag">Page 1 in 6mo</span></div></div>
+      </div>
+
+      <div class="port-full-card" data-cat="social" onclick="openModal('modal3')">
+        <div class="port-full-img p3"><i class="fas fa-spa" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>Luxe Spa & Wellness</h3><span class="tag">Social Media</span><p>Instagram growth from 800 to 9,400 followers with 4× booking increase.</p><div class="port-results"><span class="port-result-tag">+8.6K Followers</span><span class="port-result-tag">4× Bookings</span></div></div>
+      </div>
+
+      <div class="port-full-card" data-cat="web" onclick="openModal('modal4')">
+        <div class="port-full-img p4"><i class="fas fa-utensils" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>FireCraft Restaurant</h3><span class="tag">Web Design</span><p>Modern restaurant site with online reservation system and menu management.</p><div class="port-results"><span class="port-result-tag">+65% Reservations</span><span class="port-result-tag">Mobile-First</span></div></div>
+      </div>
+
+      <div class="port-full-card" data-cat="seo" onclick="openModal('modal5')">
+        <div class="port-full-img p5"><i class="fas fa-building" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>NexGen Realty</h3><span class="tag">SEO</span><p>Local SEO domination for a real estate firm across 5 cities, 300% lead increase.</p><div class="port-results"><span class="port-result-tag">+300% Leads</span><span class="port-result-tag">5 City Rankings</span></div></div>
+      </div>
+
+      <div class="port-full-card" data-cat="social" onclick="openModal('modal6')">
+        <div class="port-full-img p6"><i class="fas fa-dumbbell" style="color:rgba(255,255,255,0.5)"></i></div>
+        <div class="port-full-body"><h3>Iron Forge Gym</h3><span class="tag">Social Media</span><p>Meta ads + organic content strategy delivering 500+ new memberships in 90 days.</p><div class="port-results"><span class="port-result-tag">500+ Members</span><span class="port-result-tag">3.8× ROAS</span></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <section class="cta-banner">
+    <div style="position:relative;z-index:1;">
+      <h2>Want Results Like These?</h2>
+      <p>Let's scope your project and build a plan that delivers measurable outcomes.</p>
+      <button class="btn-green" onclick="navigate('contact')"><i class="fas fa-paper-plane"></i> Start Your Project</button>
+    </div>
+  </section>
+
+</div><!-- /portfolio -->
+
+<!-- ==================== ABOUT ==================== -->
+<div id="page-about" class="page">
+
+  <div class="page-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">Our Story</div>
+    <h1>A Team Built on Craft, Obsessed With Results</h1>
+    <p>We started as a small digital consultancy. Five years and 150 projects later, we're still driven by the same thing: making businesses grow online.</p>
+  </div>
+
+  <!-- Story -->
+  <section class="about-story">
+    <div class="about-story-grid">
+      <div>
+        <div class="section-tag">Where We Started</div>
+        <h2 class="section-heading">From a Laptop to 150+ Projects</h2>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;">Unique Solution was founded in 2019 with a simple conviction: small and medium businesses deserve the same quality of digital expertise that enterprise brands take for granted. We started with one freelancer and a lot of ambition.</p>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;">Today we're a tight-knit team of designers, developers, SEO strategists, and social media specialists who believe great digital work is equal parts craft and strategy. We care about your numbers because we know what they mean to your livelihood.</p>
+        <p style="color:var(--gray);font-size:0.95rem;line-height:1.75;">Every project we take on gets the same level of attention — whether it's a startup's first website or a growth campaign for an established brand.</p>
+      </div>
+      <div class="about-visual">
+        <div class="about-vis-box"><strong>2019</strong><span>Founded</span></div>
+        <div class="about-vis-box"><strong>150+</strong><span>Projects</span></div>
+        <div class="about-vis-box"><strong>80+</strong><span>Clients</span></div>
+        <div class="about-vis-box"><strong>12+</strong><span>Industries</span></div>
+      </div>
+    </div>
+
+    <!-- Vision & Mission -->
+    <div class="vm-grid">
+      <div class="vm-card vision">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🔭</div>
+        <h3>Our Vision</h3>
+        <p>To be the most trusted digital growth partner for businesses across the globe — where every client relationship is built on transparency, results, and long-term thinking.</p>
+      </div>
+      <div class="vm-card mission">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To deliver measurable digital outcomes through honest strategy, exceptional execution, and a genuine investment in our clients' success — without the agency fluff.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team">
+    <div class="container">
+      <div class="section-tag">The People</div>
+      <h2 class="section-heading">Meet the Team</h2>
+      <p class="section-sub">A small team with big impact. Every person here is a specialist — no generalists, no juniors doing senior work.</p>
+    </div>
+    <div class="team-grid" style="max-width:1160px;margin:0 auto;">
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#2563EB,#06B6D4)">MA</div><h4>Mubashir Ahmad</h4><p class="role">Founder & Lead Strategist</p><p>Digital strategy architect with 5+ years shaping growth campaigns across diverse industries.</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#10B981,#06B6D4)">SF</div><h4>Sara Farooq</h4><p class="role">Head of Design</p><p>UI/UX specialist with a meticulous eye for conversion-focused design that doesn't sacrifice beauty.</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#7C3AED,#C13584)">AK</div><h4>Ali Khalid</h4><p class="role">SEO & Content Lead</p><p>Technical SEO expert who has moved 50+ sites to page one with sustainable, white-hat strategies.</p></div>
+      <div class="team-card"><div class="team-avatar" style="background:linear-gradient(135deg,#ea580c,#F59E0B)">NR</div><h4>Nadia Rehman</h4><p class="role">Social Media Director</p><p>Platform strategist and creative director behind campaigns that have driven millions in organic reach.</p></div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="values">
+    <div class="container">
+      <div class="section-tag">What Drives Us</div>
+      <h2 class="section-heading" style="text-align:center;">Our Core Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="val-card"><div class="val-icon" style="background:rgba(37,99,235,0.1);color:var(--electric)"><i class="fas fa-lightbulb"></i></div><h4>Innovation</h4><p>We stay ahead of digital trends so our clients always have a competitive edge.</p></div>
+      <div class="val-card"><div class="val-icon" style="background:rgba(16,185,129,0.1);color:var(--green)"><i class="fas fa-shield-halved"></i></div><h4>Integrity</h4><p>Honest reporting, clear pricing, and no surprises. Always.</p></div>
+      <div class="val-card"><div class="val-icon" style="background:rgba(6,182,212,0.1);color:var(--cyan)"><i class="fas fa-trophy"></i></div><h4>Results</h4><p>We measure success the same way our clients do — in growth, leads, and revenue.</p></div>
+      <div class="val-card"><div class="val-icon" style="background:rgba(124,58,237,0.1);color:#7C3AED"><i class="fas fa-handshake"></i></div><h4>Collaboration</h4><p>We work with you, not just for you. Your input shapes everything we build.</p></div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="certs">
+    <h3>Trusted & Certified</h3>
+    <div class="cert-badges">
+      <div class="cert-badge"><i class="fab fa-google" style="color:#4285F4"></i><span>Google Partner</span></div>
+      <div class="cert-badge"><i class="fab fa-meta" style="color:#0082FB"></i><span>Meta Blueprint Certified</span></div>
+      <div class="cert-badge"><i class="fas fa-award" style="color:#F59E0B"></i><span>HubSpot Certified</span></div>
+      <div class="cert-badge"><i class="fas fa-shield-check" style="color:var(--green)"></i><span>SSL & Security Verified</span></div>
+    </div>
+  </section>
+
+</div><!-- /about -->
+
+<!-- ==================== BLOG ==================== -->
+<div id="page-blog" class="page">
+
+  <div class="blog-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">Insights & Strategy</div>
+    <h1>Insights & Strategies for Digital Growth</h1>
+    <p>Expert articles on Web Design, SEO, Social Media, and Lead Generation.</p>
+    <div class="blog-search">
+      <input type="text" placeholder="Search articles…">
+      <button><i class="fas fa-search"></i> Search</button>
+    </div>
+  </div>
+
+  <div class="blog-filters">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Web Design</button>
+    <button class="filter-btn">SEO</button>
+    <button class="filter-btn">Social Media</button>
+    <button class="filter-btn">Lead Generation</button>
+  </div>
+
+  <section class="blog-section">
+    <!-- Featured -->
+    <div class="featured-article">
+      <div class="feat-img"><i class="fas fa-globe" style="color:rgba(255,255,255,0.5);font-size:4rem"></i></div>
+      <div class="feat-body">
+        <span class="blog-cat">Web Design</span>
+        <div class="feat-meta"><span><i class="fas fa-calendar"></i> Oct 2026</span><span><i class="fas fa-clock"></i> 8 min read</span></div>
+        <h2>10 Web Design Trends Reshaping the Digital Landscape in 2026</h2>
+        <p>From AI-driven personalization to scroll-triggered micro-interactions, the websites that win today look and behave completely differently from what worked just two years ago. Here's what forward-thinking brands are doing now — and why it works.</p>
+        <button class="btn-primary"><i class="fas fa-book-open"></i> Read Article</button>
+      </div>
+    </div>
+
+    <!-- Article Grid -->
+    <div class="blog-full-grid">
+      <div class="blog-card"><div class="blog-img b2"><i class="fas fa-magnifying-glass-chart" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">SEO</span><h3>How to Rank on Page 1 Without Burning Your Budget</h3><p>Sustainable strategies that compound over time — no shortcuts.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Mubashir A.</span><span><i class="fas fa-clock"></i> 7 min</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b3"><i class="fas fa-hashtag" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Social Media</span><h3>The Content Calendar Strategy That Tripled Our Reach</h3><p>The exact planning framework we use for our top-performing clients.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Nadia R.</span><span><i class="fas fa-clock"></i> 6 min</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b1"><i class="fas fa-funnel-dollar" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Lead Generation</span><h3>5 Landing Page Elements That Kill Conversions</h3><p>Small mistakes on your landing page that are costing you customers every day.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Sara F.</span><span><i class="fas fa-clock"></i> 5 min</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b2"><i class="fas fa-robot" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">SEO</span><h3>AI & SEO in 2026: What Actually Changed</h3><p>Separating the real shifts from the noise after AI-powered search went mainstream.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Ali K.</span><span><i class="fas fa-clock"></i> 9 min</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b3"><i class="fas fa-ad" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Social Media</span><h3>Meta Ads in 2026: Targeting Changes You Need to Know</h3><p>Platform updates that have shifted how to run profitable campaigns.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Nadia R.</span><span><i class="fas fa-clock"></i> 7 min</span></div></div></div>
+      <div class="blog-card"><div class="blog-img b1"><i class="fas fa-mobile-screen" style="color:rgba(255,255,255,0.4)"></i></div><div class="blog-body"><span class="blog-cat">Web Design</span><h3>Mobile-First Is Table Stakes. Here's What's Next.</h3><p>The performance benchmarks and UX patterns defining the next wave of mobile web.</p><div class="blog-meta"><span><i class="fas fa-user-circle"></i> Sara F.</span><span><i class="fas fa-clock"></i> 6 min</span></div></div></div>
+    </div>
+
+    <div class="load-more"><button class="btn-outline" style="color:var(--electric);border-color:var(--electric)"><i class="fas fa-rotate-right"></i> Load More Articles</button></div>
+
+    <!-- Newsletter CTA -->
+    <div style="max-width:1160px;margin:4rem auto 0;background:linear-gradient(135deg,var(--navy),#1a3a6e);border-radius:20px;padding:3rem;text-align:center;">
+      <h3 style="color:#fff;font-size:1.5rem;font-weight:700;margin-bottom:0.6rem;">Subscribe for Weekly Growth Insights</h3>
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:1.5rem;font-size:0.9rem;">No spam. Just actionable digital marketing tips, delivered every Tuesday.</p>
+      <div style="display:flex;gap:0;max-width:400px;margin:0 auto;">
+        <input type="email" placeholder="Your email address" style="flex:1;padding:13px 20px;border:none;border-radius:50px 0 0 50px;font-size:0.9rem;outline:none;">
+        <button class="btn-green" style="border-radius:0 50px 50px 0;padding:13px 22px;white-space:nowrap;"><i class="fas fa-paper-plane"></i> Subscribe</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /blog -->
+
+<!-- ==================== CONTACT ==================== -->
+<div id="page-contact" class="page">
+
+  <div class="page-hero">
+    <div class="section-tag" style="background:rgba(255,255,255,0.12);color:#fff;">Get In Touch</div>
+    <h1>Let's Talk About Your Project</h1>
+    <p>Fill in the form or reach us directly. We respond to every enquiry within 24 hours.</p>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-form-wrap">
+        <h3>Send Us a Message</h3>
+        <p>Tell us about your project and we'll come back with a tailored proposal.</p>
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Smith"></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@company.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+1 (555) 000-0000"></div>
+          <div class="form-group"><label>Service Needed</label><select><option value="">Select a Service</option><option>Website Design & Development</option><option>SEO</option><option>Social Media Marketing</option><option>Full Package</option></select></div>
+        </div>
+        <div class="form-group"><label>Project Brief / Message</label><textarea placeholder="Tell us about your business, goals, and any details that will help us understand your needs…"></textarea></div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="this.innerHTML='<i class=\'fas fa-check\'></i> Message Sent!';this.style.background='var(--green)'"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+
+      <div class="contact-info-wrap">
+        <h3>Contact Information</h3>
+        <p>Prefer to reach out directly? Here are all the ways to get hold of us.</p>
+
+        <div class="contact-detail"><div class="contact-detail-icon"><i class="fas fa-phone"></i></div><div class="contact-detail-text"><h5>Phone & WhatsApp</h5><p>+1 (608) 658-4397</p></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon"><i class="fas fa-envelope"></i></div><div class="contact-detail-text"><h5>Email</h5><a href="mailto:mubasharideas@gmail.com">mubasharideas@gmail.com</a></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon"><i class="fas fa-clock"></i></div><div class="contact-detail-text"><h5>Working Hours</h5><p>Mon–Fri: 9:00 AM – 6:00 PM<br>Sat: 10:00 AM – 3:00 PM</p></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon"><i class="fas fa-reply"></i></div><div class="contact-detail-text"><h5>Response Time</h5><p>We reply to all enquiries within 24 business hours.</p></div></div>
+
+        <div class="map-placeholder"><i class="fas fa-map-location-dot"></i></div>
+
+        <div class="contact-social">
+          <h5>Find Us On Social</h5>
+          <div class="social-links">
+            <a class="social-link fb"><i class="fab fa-facebook-f"></i></a>
+            <a class="social-link ig"><i class="fab fa-instagram"></i></a>
+            <a class="social-link li"><i class="fab fa-linkedin-in"></i></a>
+            <a class="social-link tw"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /contact -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid" style="max-width:1160px;margin:0 auto;">
+    <div class="footer-brand">
+      <div class="footer-logo">Unique<span>Solution</span></div>
+      <p>We help businesses build their online presence and generate more leads. Strategy. Design. Results.</p>
+      <div class="footer-social">
+        <a><i class="fab fa-facebook-f"></i></a>
+        <a><i class="fab fa-instagram"></i></a>
+        <a><i class="fab fa-linkedin-in"></i></a>
+        <a><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a onclick="navigate('services')">Web Design & Development</a></li>
+        <li><a onclick="navigate('services')">SEO</a></li>
+        <li><a onclick="navigate('services')">Social Media Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a onclick="navigate('about')">About Us</a></li>
+        <li><a onclick="navigate('portfolio')">Portfolio</a></li>
+        <li><a onclick="navigate('blog')">Blog</a></li>
+        <li><a onclick="navigate('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="tel:+16086584397">+1 (608) 658-4397</a></li>
+        <li><a href="mailto:mubasharideas@gmail.com">mubasharideas@gmail.com</a></li>
+        <li><a>Mon–Fri: 9AM – 6PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom" style="max-width:1160px;margin:0 auto;">
+    <span>© 2026 Unique Solution. All rights reserved.</span>
+    <span>Built with ❤️ for digital growth</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="https://wa.me/16086584397" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Portfolio Modals -->
+<div class="modal-overlay" id="modal1">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal1')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p1" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-store" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(37,99,235,0.1);color:var(--electric);font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">Web Design</span>
+    <h2>Evergreen E-Commerce</h2>
+    <p>Evergreen needed a complete overhaul of their WooCommerce storefront — poor mobile experience, slow load times, and a checkout process that was losing half their customers. We rebuilt everything from the ground up.</p>
+    <p>The new site features a custom product filtering system, a streamlined 2-step checkout, and a mobile-first design that loads in under 3 seconds on 4G.</p>
+    <p style="font-weight:600;font-size:0.85rem;color:var(--slate);margin-bottom:0.5rem;">Tech Stack</p>
+    <div class="tech-stack"><span class="tech-tag">WordPress</span><span class="tech-tag">WooCommerce</span><span class="tech-tag">Tailwind CSS</span><span class="tech-tag">WebP Images</span><span class="tech-tag">Cloudflare CDN</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>+40%</strong><span>Conversion Rate</span></div><div class="modal-result"><strong>2.8s</strong><span>Load Time</span></div><div class="modal-result"><strong>+90</strong><span>Lighthouse Score</span></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal2">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal2')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p2" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-leaf" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(16,185,129,0.1);color:var(--green);font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">SEO</span>
+    <h2>OrganicRoots Market</h2>
+    <p>A specialty food market competing against major national chains. They had strong products but zero organic visibility. Our 6-month SEO program targeted 45 high-intent local and product keywords.</p>
+    <p>We restructured their site architecture, created a blog content hub, and built a clean backlink profile through local citations and food industry partnerships.</p>
+    <p style="font-weight:600;font-size:0.85rem;color:var(--slate);margin-bottom:0.5rem;">Approach</p>
+    <div class="tech-stack"><span class="tech-tag">Technical SEO Audit</span><span class="tech-tag">Keyword Research</span><span class="tech-tag">Content Strategy</span><span class="tech-tag">Local Citations</span><span class="tech-tag">Link Building</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>+280%</strong><span>Organic Traffic</span></div><div class="modal-result"><strong>#2</strong><span>Avg. Ranking</span></div><div class="modal-result"><strong>18</strong><span>Page-1 Keywords</span></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal3">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal3')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p3" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-spa" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(124,58,237,0.1);color:#7C3AED;font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">Social Media</span>
+    <h2>Luxe Spa & Wellness</h2>
+    <p>Luxe had a beautiful service but no social presence. We built their Instagram from near-zero to 9,400 engaged followers through a monthly content cadence of before/afters, reels, and UGC campaigns.</p>
+    <p>Combined with targeted Meta ads for new client acquisition, the campaign delivered a 4× increase in online bookings over 5 months.</p>
+    <p style="font-weight:600;font-size:0.85rem;color:var(--slate);margin-bottom:0.5rem;">Channels & Tactics</p>
+    <div class="tech-stack"><span class="tech-tag">Instagram</span><span class="tech-tag">Facebook</span><span class="tech-tag">Meta Ads</span><span class="tech-tag">Reels Strategy</span><span class="tech-tag">UGC Campaigns</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>+8.6K</strong><span>Followers</span></div><div class="modal-result"><strong>4×</strong><span>Booking Increase</span></div><div class="modal-result"><strong>5.2%</strong><span>Engagement Rate</span></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal4">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal4')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p4" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-utensils" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(37,99,235,0.1);color:var(--electric);font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">Web Design</span>
+    <h2>FireCraft Restaurant</h2>
+    <p>A premium restaurant needing a website that matched the experience inside. We built a custom Webflow site with integrated online reservations, an animated menu, and a photo-first mobile layout.</p>
+    <div class="tech-stack"><span class="tech-tag">Webflow</span><span class="tech-tag">Custom Animations</span><span class="tech-tag">Reservation API</span><span class="tech-tag">WebP</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>+65%</strong><span>Online Reservations</span></div><div class="modal-result"><strong>92</strong><span>Lighthouse Score</span></div><div class="modal-result"><strong>2.1s</strong><span>Load Time</span></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal5">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal5')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p5" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-building" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(16,185,129,0.1);color:var(--green);font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">SEO</span>
+    <h2>NexGen Realty</h2>
+    <p>A growing real estate firm targeting buyers and investors across 5 cities. Local SEO was the priority — we built individual city landing pages, optimized their Google Business profiles, and ran a 9-month content strategy.</p>
+    <div class="tech-stack"><span class="tech-tag">Local SEO</span><span class="tech-tag">Google Business</span><span class="tech-tag">City Landing Pages</span><span class="tech-tag">Schema Markup</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>+300%</strong><span>Inbound Leads</span></div><div class="modal-result"><strong>5</strong><span>City #1 Rankings</span></div><div class="modal-result"><strong>9mo</strong><span>Campaign Duration</span></div></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal6">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal6')"><i class="fas fa-times"></i></button>
+    <div class="port-full-img p6" style="border-radius:12px;height:200px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;"><i class="fas fa-dumbbell" style="color:rgba(255,255,255,0.5)"></i></div>
+    <span class="tag" style="background:rgba(124,58,237,0.1);color:#7C3AED;font-size:0.78rem;font-weight:600;font-family:'Poppins',sans-serif;padding:4px 12px;border-radius:50px;display:inline-block;margin-bottom:0.8rem;">Social Media</span>
+    <h2>Iron Forge Gym</h2>
+    <p>A new gym competing against established chains. We ran a launch campaign combining organic content (transformation stories, workout tips, behind-the-scenes) with a 90-day Meta ads campaign targeting local fitness audiences.</p>
+    <div class="tech-stack"><span class="tech-tag">Meta Ads</span><span class="tech-tag">Instagram Reels</span><span class="tech-tag">Community Building</span><span class="tech-tag">Retargeting</span></div>
+    <div class="modal-results"><div class="modal-result"><strong>500+</strong><span>New Members</span></div><div class="modal-result"><strong>3.8×</strong><span>ROAS</span></div><div class="modal-result"><strong>90 days</strong><span>Campaign Length</span></div></div>
+  </div>
+</div>
+
+<script>
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === page);
+  });
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+function filterPortfolio(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#portfolioGrid .port-full-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', function(e) {
+    if (e.target === m) { m.classList.remove('open'); document.body.style.overflow = ''; }
+  });
+});
+
+// Blog filter tabs (visual only)
+document.querySelectorAll('.blog-filters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.blog-filters .filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
